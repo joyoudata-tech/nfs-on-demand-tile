@@ -1,0 +1,18 @@
+---
+name: nfs-on-demand
+product_version: 0.0.1
+metadata_version: '1.8'
+stemcell_criteria:
+  os: ubuntu-trusty
+  version: '3312'
+  enable_patch_security_updates: true
+
+releases:
+- name: nfs
+  file: nfs-0+dev.1.tgz
+  version: 0+dev.1
+  md5: cd826997d22c0594f5d992f57f097000 
+
+provides_product_versions:
+- name: nfs-on-demand
+  version: 0.0.1
