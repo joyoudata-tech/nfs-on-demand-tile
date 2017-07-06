@@ -11,13 +11,13 @@ form_types:
   label: Configurable NFS
   description: Configure NFS Volume
   property_inputs:
-  - reference: ".properties.allow_from_entries"
+  - reference: ".nfs_server.allow_from_entries"
     label: NFS ACL
     description: 'Please set * allow all or set cidr'
-  - reference: ".properties.no_root_squash"
+  - reference: ".nfs_server.no_root_squash"
     label: Set no_root_squash
     description: 'Boolean,Defaults false'
-  - reference: ".properties.nfsv4"
+  - reference: ".nfs_server.nfsv4"
     label: NFS V4 Support
     description: 'Boolean,please set true'
 
@@ -31,10 +31,10 @@ job_types:
     release: nfs
     manifest: |
       nfs_server:
-        allow_from_entries: (( .properties.allow_from_entries.parsed_strings ))
-        no_root_squash: (( .properties.no_root_squash.value ))
+        allow_from_entries: (( .nfs_server.allow_from_entries.parsed_strings ))
+        no_root_squash: (( .nfs_server.no_root_squash.value ))
         address: (( .nfs_server.first_ip ))
-        nfsv4: (( .properties.nfsv4.value ))
+        nfsv4: (( .nfs_server.nfsv4.value ))
         share_path: /var/vcap/store/persistent
   max_in_flight: 1
   dynamic_ip: 0
